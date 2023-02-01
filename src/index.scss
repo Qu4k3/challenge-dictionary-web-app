@@ -1,0 +1,45 @@
+@use 'styles/variables';
+
+:root {
+  --bg-color: hsl(0, 0%, 100%);
+  --bg-input-color: hsl(0, 0%, 91%);
+  --text-color: hsl(0, 0%, 2%);
+  --text-color-active: hsl(274, 82%, 60%);
+  --text-color-alt: hsl(0, 0%, 51%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: hsl(0, 0%, 2%);
+    --bg-input-color: hsl(0, 0%, 12%);
+    --text-color: hsl(0, 0%, 96%);
+    --text-color-active: hsl(274, 82%, 60%);
+    --text-color-alt: hsl(0, 0%, 51%);
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inconsolata', monospace;
+  font-family: 'Inter', sans-serif;
+  font-family: 'Lora', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+input {
+  font-family: variables.$font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
