@@ -1,0 +1,23 @@
+// colors
+$bg-color-l: hsl(0, 0%, 100%);
+$bg-color-d: hsl(0, 0%, 2%);
+
+$input-bg-color-l: hsl(0, 0%, 96%);
+$input-bg-color-d: hsl(0, 0%, 12%);
+
+$text-color-l: hsl(0, 0%, 2%);
+$text-color-d: hsl(0, 0%, 96%);
+$text-color-active: hsl(274, 82%, 60%);
+$text-color-alt: hsl(0, 0%, 51%);
+
+$color-invalid: hsl(0, 100%, 66%);
+
+// defaults
+$font-family-serif: 'Lora', serif;
+$font-family-sans-serif: 'Inter', sans-serif;
+$font-family-mono: 'Inconsolata', monospace;
+$font-size: 18px;
+
+// breakpoints
+$small: 576px;
+$medium: 768px;

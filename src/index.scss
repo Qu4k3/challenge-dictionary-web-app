@@ -1,22 +1,24 @@
 @use 'styles/variables';
 
+// https://sass-lang.com/documentation/breaking-changes/css-vars
 :root {
-  --bg-color: hsl(0, 0%, 100%);
-  --bg-input-color: hsl(0, 0%, 91%);
-  --text-color: hsl(0, 0%, 2%);
-  --text-color-active: hsl(274, 82%, 60%);
-  --text-color-alt: hsl(0, 0%, 51%);
+  --font-family: #{variables.$font-family-serif};
+  --bg-color: #{variables.$bg-color-l};
+  --bg-input-color: #{variables.$input-bg-color-l};
+  --text-color: #{variables.$text-color-l};
+  --text-color-active: #{variables.$text-color-active};
+  --text-color-alt: #{variables.$text-color-alt};
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
-    --bg-color: hsl(0, 0%, 2%);
-    --bg-input-color: hsl(0, 0%, 12%);
-    --text-color: hsl(0, 0%, 96%);
-    --text-color-active: hsl(274, 82%, 60%);
-    --text-color-alt: hsl(0, 0%, 51%);
+    --bg-color: #{variables.$bg-color-d};
+    --bg-input-color: #{variables.$input-bg-color-d};
+    --text-color: #{variables.$text-color-d};
+    --text-color-active: #{variables.$text-color-active};
+    --text-color-alt: #{variables.$text-color-alt};
   }
-}
+} */
 
 * {
   padding: 0;
@@ -26,15 +28,13 @@
 
 body {
   margin: 0;
-  font-family: 'Inconsolata', monospace;
-  font-family: 'Inter', sans-serif;
-  font-family: 'Lora', serif;
+  font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 input {
-  font-family: variables.$font-family;
+  // font-family: variables.$font-family;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -42,4 +42,70 @@ input {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+#dictionary {
+  max-width: 736px;
+  margin: 0 auto;
+  padding-top: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 5px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 23px;
+  width: 44px;
+  background-color: variables.$text-color-alt;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: variables.$text-color-active;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px variables.$text-color-active;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
 }
