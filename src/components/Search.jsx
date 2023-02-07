@@ -4,75 +4,24 @@ import { dictionaryAPI } from '../services/dictionaryAPI';
 import { Definition } from './Definition';
 
 export function Search() {
-  const [dictionaryAPIResponse, setDictionaryAPIResponse] = useState([
-    {
-      "word": "hello",
-      "phonetic": "həˈləʊ",
-      "phonetics": [
-        {
-          "text": "həˈləʊ",
-          "audio": "//ssl.gstatic.com/dictionary/static/sounds/20200429/hello--_gb_1.mp3"
-        },
-        {
-          "text": "hɛˈləʊ"
-        }
-      ],
-      "origin": "early 19th century: variant of earlier hollo ; related to holla.",
-      "meanings": [
-        {
-          "partOfSpeech": "exclamation",
-          "definitions": [
-            {
-              "definition": "used as a greeting or to begin a phone conversation.",
-              "example": "hello there, Katie!",
-              "synonyms": [],
-              "antonyms": []
-            }
-          ]
-        },
-        {
-          "partOfSpeech": "noun",
-          "definitions": [
-            {
-              "definition": "an utterance of ‘hello’; a greeting.",
-              "example": "she was getting polite nods and hellos from people",
-              "synonyms": [],
-              "antonyms": []
-            }
-          ]
-        },
-        {
-          "partOfSpeech": "verb",
-          "definitions": [
-            {
-              "definition": "say or shout ‘hello’.",
-              "example": "I pressed the phone button and helloed",
-              "synonyms": [],
-              "antonyms": []
-            }
-          ]
-        }
-      ]
-    }
-  ]);
+  const [dictionaryAPIResponse, setDictionaryAPIResponse] = useState([]);
   const [noDefinition, setNoDefinition] = useState(false)
   const [invalidInput, setInvalidInput] = useState(false)
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setInvalidInput(false)
     const word = event.target.search.value;
 
-    dictionaryAPI(word)
-      .then(data => {
-        console.log(data);
-        if (data.isArray) {
-          setNoDefinition(false)
-          setDictionaryAPIResponse(data)
-        } else {
-          setNoDefinition(data)
-        }
-      })
+    const definition = await dictionaryAPI(word)
+      
+    if (!Array.isArray(definition)) {
+      setNoDefinition(definition)
+    } else {
+      setNoDefinition(false)
+      setDictionaryAPIResponse(definition)
+    }
+     
     // event.target.reset();
   }
 
@@ -97,9 +46,7 @@ export function Search() {
       </form>
       {
         dictionaryAPIResponse &&
-        dictionaryAPIResponse.map((data => {
-          <Definition data={data} />
-        }))
+        dictionaryAPIResponse.map((data, i) => <Definition key={i} data={data} />)
       }
     </section>
   )

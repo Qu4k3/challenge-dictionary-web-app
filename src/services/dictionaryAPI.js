@@ -1,8 +1,8 @@
 const DICTIONARY_API_ENDPOINT = 'https://api.dictionaryapi.dev/api/v2/entries/en/'
 
-export const dictionaryAPI = async (word) => {
-  const response = await fetch(`${DICTIONARY_API_ENDPOINT}${word}`)
-  .then(response => response.json())
+export const dictionaryAPI = (word) => {
+  return fetch(`${DICTIONARY_API_ENDPOINT}${word}`)
   .catch(error => console.log('Fetch error:' + error))
-  return response
+  .then(response => response.json())  
+  .then(data => data)
 }
