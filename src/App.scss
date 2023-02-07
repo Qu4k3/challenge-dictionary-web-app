@@ -40,7 +40,7 @@
       font-family: var(--font-family);
       font-weight: 700;
       border: none;
-      padding: 20px;
+      padding: 20px 30px;
       border-radius: 15px;
       color: var(--text-color);
       font-size: 1.2rem;
@@ -57,6 +57,10 @@
 
       &.invalid {
         outline: 1px solid variables.$color-invalid;
+      }
+
+      &:-internal-autofill-selected {
+        background-color: var(--bg-input-color) !important;
       }
     }
 
@@ -83,6 +87,80 @@
   }
 
   .definition {
-    border-top: 1px solid;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    & > div {
+      display: flex;
+      gap: 40px;
+    }
+
+    & > div:not(:first-child):not(:last-child) {
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 0;
+    }
+
+    h4 {
+      font-size: 1.5rem;
+      color: var(--text-color-active);
+      font-weight: 400;
+    }
+
+    h5 {
+      font-size: 1.2rem;
+      color: var(--text-color-alt);
+      font-weight: 400;
+    }
+
+    .definition__word {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .word__audio {
+        button {
+          border-radius: 100%;
+          display: flex;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .definition__meaning {
+      ul {
+        padding-left: 50px;
+        list-style: none;
+
+        li {
+          position: relative;
+          margin-bottom: 15px;
+
+          &::before {
+            position: absolute;
+            content: "\2022";
+            color: var(--text-color-active);
+            left: -25px;
+          }
+        }
+      }
+      .meaning__synonyms {
+        display: flex;
+        gap: 20px;
+
+        span {
+          font-size: 1.2rem;
+          color: var(--text-color-active);
+          font-weight: 700;
+        }
+      }
+    }
   }
 }

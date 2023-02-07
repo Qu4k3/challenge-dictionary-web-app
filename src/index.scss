@@ -2,7 +2,7 @@
 
 // https://sass-lang.com/documentation/breaking-changes/css-vars
 :root {
-  --font-family: #{variables.$font-family-serif};
+  --font-family: #{variables.$font-family-sans-serif};
   --bg-color: #{variables.$bg-color-l};
   --bg-input-color: #{variables.$input-bg-color-l};
   --text-color: #{variables.$text-color-l};
@@ -31,6 +31,7 @@ body {
   font-family: var(--font-family);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: variables.$font-size;
 }
 
 input {
@@ -50,6 +51,7 @@ code {
   padding-top: 50px;
   padding-left: 20px;
   padding-right: 20px;
+  padding-bottom: 100px;
 }
 
 /* The switch - the box around the slider */
@@ -108,4 +110,9 @@ input:checked + .slider:before {
   -webkit-transform: translateX(20px);
   -ms-transform: translateX(20px);
   transform: translateX(20px);
+}
+
+button {
+  border: none;
+  background-color: transparent;
 }
