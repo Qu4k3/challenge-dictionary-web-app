@@ -3,8 +3,8 @@ import { ReactComponent as NewWindowIcon } from '../assets/icon-new-window.svg';
 
 export function Definition({ data }) {
 
-  const handlePlay = () => {
-    const audio = new Audio(data.phonetics[2].audio);
+  const handlePlay = (audioFile) => {
+    const audio = new Audio(audioFile);
     audio.play()
   }
 
@@ -15,29 +15,31 @@ export function Definition({ data }) {
           <h1>{data.word}</h1>
           <h4>{data.phonetic}</h4>
         </div>
-        <div className="word__audio">
-          <button onClick={() => handlePlay()}>
-            <PlayIcon />
-          </button>
-        </div>
+        {data.phonetics[2].audio &&
+          <div className="word__audio">
+            <button onClick={() => handlePlay(data.phonetics[2].audio)}>
+              <PlayIcon />
+            </button>
+          </div>
+        }
       </div>
 
       {
         data.meanings.map(meaning => (
           <div className='definition__meaning'>
-            <div className='meaning__part-of-speech'>{meaning.partOfSpeech}</div>
+            <div className='meaning__part-of-speech'><span>{meaning.partOfSpeech}</span></div>
             <h5>Meaning</h5>
             <ul>
               {meaning.definitions.map(definition => (
-                <li>{definition.definition}</li>
+                <li><p>{definition.definition}</p>{definition.example && <p className='definition--alt'>"{definition.example}"</p>}</li>
               ))
               }
             </ul>
             {(meaning.synonyms.length > 0) &&
-            <div className='meaning__synonyms'>
-              <h5>Synonyms</h5>
-              <span>{meaning.synonyms}</span>
-            </div>}
+              <div className='meaning__synonyms'>
+                <h5>Synonyms</h5>
+                <span>{meaning.synonyms}</span>
+              </div>}
           </div>
         ))
       }
@@ -48,7 +50,7 @@ export function Definition({ data }) {
           data.sourceUrls.map(source => (
             <>
               <span className='source__links'>
-                <a href={source}>source</a>
+                <a href={source} alt="source">{source}</a>
                 <NewWindowIcon />
               </span>
             </>
