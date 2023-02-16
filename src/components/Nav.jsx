@@ -14,12 +14,10 @@ export function Nav() {
 
   const checkLocalStorageSetState = () => {
     let darkMode = localStorage.getItem('darkMode');
-    console.log(darkMode)
+    darkMode = JSON.parse(darkMode)
 
     if (darkMode) {
       document.querySelector('input[type=checkbox]').checked = true;
-    } else {
-      document.querySelector('input[type=checkbox]').checked = false;
     }
 
     setIsDarkMode(darkMode); 
