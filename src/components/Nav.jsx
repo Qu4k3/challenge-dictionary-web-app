@@ -1,13 +1,38 @@
-import AppLogo from '../assets/logo.svg';
-import Moon from '../assets/icon-moon.svg';
-import MoonDark from '../assets/icon-moon-purple.svg';
+import { useState, useEffect } from 'react';
+import { ReactComponent as AppLogo } from '../assets/logo.svg';
+import { ReactComponent as Moon } from '../assets/icon-moon.svg';
 
 export function Nav() {
+
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const handleSwitch = (event) => { 
+    const switchValue = event.target.checked;   
+    setIsDarkMode(switchValue);
+    localStorage.setItem('darkMode', switchValue);
+  }
+
+  const checkLocalStorageSetState = () => {
+    let darkMode = localStorage.getItem('darkMode');
+    console.log(darkMode)
+
+    if (darkMode) {
+      document.querySelector('input[type=checkbox]').checked = true;
+    } else {
+      document.querySelector('input[type=checkbox]').checked = false;
+    }
+
+    setIsDarkMode(darkMode); 
+  }
+
+  useEffect(() => {
+    checkLocalStorageSetState()
+  }, [])
 
   return (
     <section className='nav'>
       <div className='nav__logo'>
-        <img src={AppLogo} alt='Dictionary' />
+        <AppLogo />
       </div>
 
       <div className='nav__actions'>
@@ -19,11 +44,13 @@ export function Nav() {
 
         <div className='actions__theme-switch'>
           <label className="switch">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              onChange={handleSwitch}
+            />
             <span className="slider round"></span>
           </label>
-
-          <img src={Moon} alt='Moon' />
+          <Moon stroke={isDarkMode ? 'hsl(274, 82%, 60%)' : '#757575'} />
         </div>
       </div>
     </section>
