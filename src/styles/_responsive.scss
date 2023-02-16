@@ -1,0 +1,85 @@
+@use './variables';
+
+@media screen and (max-width: variables.$medium) {
+  #dictionary {
+    padding-top: 30px;
+    padding-bottom: 80px;
+  }
+  
+  body {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  .search-definition {
+    margin-top: 20px;
+
+    form {
+      input {
+        padding: 15px 25px;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .search-definition {
+    .definition {
+      margin-top: 20px;
+
+      h1 {
+        font-size: 2.1rem;
+      }
+  
+      h4 {
+        font-size: 1.2rem;
+      }
+
+      h5 {
+        font-size: 1rem;
+      }
+
+      .definition__word {
+        .word__audio {
+          svg {
+            width: 50px;
+          }
+        }
+      }
+
+      .definition__meaning {
+        gap: 20px;
+
+        .meaning__part-of-speech {
+          font-size: 1.2rem;
+          margin-bottom: 10px;
+        }
+
+        ul {
+          padding-left: 20px;
+        }
+
+        .meaning__synonyms { 
+          span {
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .definition__source {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        margin-top: 35px;
+
+        &::before {
+          top: -30px;
+        }
+      }      
+    }    
+  }
+}
+
+@media screen and (max-width: variables.$small) {
+
+  
+}
