@@ -35,6 +35,7 @@ export function Search() {
           pattern='[a-zA-Z]+'
           className={(invalidInput || noDefinition) ? 'invalid' : ''}
           onInvalid={() => { setInvalidInput(true) }}
+          autoComplete="off"
           required
         />
         {
