@@ -15,7 +15,7 @@ export function Definition({ data }) {
           <h1>{data.word}</h1>
           <h4>{data.phonetic}</h4>
         </div>
-        {data.phonetics[2].audio &&
+        {data?.phonetics[2]?.audio &&
           <div className="word__audio">
             <button onClick={() => handlePlay(data.phonetics[2].audio)}>
               <PlayIcon />
