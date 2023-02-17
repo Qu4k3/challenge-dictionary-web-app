@@ -24,7 +24,7 @@
       display: flex;
       gap: 5px;
       align-items: center;
-      border-left: 1px solid variables.$input-bg-color-l;
+      border-left: 2px solid var(--bg-input-color);
       padding-left: 30px;
     }
   }
@@ -59,7 +59,11 @@
         outline: 1px solid variables.$color-invalid;
       }
 
-      &:-internal-autofill-selected {
+      &:autofill,
+      :-webkit-autofill,
+      :-webkit-autofill:hover,
+      :-webkit-autofill:focus,
+      :-webkit-autofill:active {
         background-color: var(--bg-input-color) !important;
       }
     }
