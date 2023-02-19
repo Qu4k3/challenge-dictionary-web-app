@@ -37,6 +37,10 @@ export function Nav() {
     checkLocalStorageSetState();
   }, []);
 
+  const handleFontChange = (event) => {
+    console.log('handleFontChange - event', event)
+  }
+
   return (
     <section className="nav">
       <div className="nav__logo">
@@ -59,7 +63,7 @@ export function Nav() {
             aria-controls="font-theme-select__listbox"
             aria-expanded="false"
             tabindex="0"
-            onClick={}
+            onClick={handleFontChange}
           >
             <span>Sans Serif</span>
           </div>
