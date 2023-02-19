@@ -3,42 +3,54 @@
 // https://sass-lang.com/documentation/breaking-changes/css-vars
 @media (prefers-color-scheme: light) {
   :root {
-    --font-family: #{variables.$font-family-sans-serif};
     --bg-color: #{variables.$bg-color-l};
     --bg-input-color: #{variables.$input-bg-color-l};
     --text-color: #{variables.$text-color-l};
     --text-color-active: #{variables.$text-color-active};
     --text-color-alt: #{variables.$text-color-alt};
+    --shadow-modal: #{variables.$input-bg-color-l};
   }
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --font-family: #{variables.$font-family-sans-serif};
     --bg-color: #{variables.$bg-color-d};
     --bg-input-color: #{variables.$input-bg-color-d};
     --text-color: #{variables.$text-color-d};
     --text-color-active: #{variables.$text-color-active};
     --text-color-alt: #{variables.$text-color-alt};
+    --shadow-modal: #{variables.$text-color-active};
   }
 }
 
 [data-theme="light"] {
-  --font-family: #{variables.$font-family-sans-serif};
   --bg-color: #{variables.$bg-color-l};
   --bg-input-color: #{variables.$input-bg-color-l};
   --text-color: #{variables.$text-color-l};
   --text-color-active: #{variables.$text-color-active};
   --text-color-alt: #{variables.$text-color-alt};
+  --shadow-modal: #{variables.$input-bg-color-l};
 }
 
 [data-theme="dark"] {
-  --font-family: #{variables.$font-family-sans-serif};
   --bg-color: #{variables.$bg-color-d};
   --bg-input-color: #{variables.$input-bg-color-d};
   --text-color: #{variables.$text-color-d};
   --text-color-active: #{variables.$text-color-active};
   --text-color-alt: #{variables.$text-color-alt};
+  --shadow-modal: #{variables.$text-color-active};
+}
+
+[data-font="serif"] {
+  --font-family: #{variables.$font-family-serif};
+}
+
+[data-font="sans-serif"] {
+  --font-family: #{variables.$font-family-sans-serif};
+}
+
+[data-font="mono"] {
+  --font-family: #{variables.$font-family-mono};
 }
 
 * {
@@ -60,6 +72,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: variables.$font-size;
+  line-height: 1.5;
 }
 
 input {
