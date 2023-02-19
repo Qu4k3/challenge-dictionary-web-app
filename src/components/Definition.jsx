@@ -35,10 +35,27 @@ export function Definition({ data }) {
               ))
               }
             </ul>
-            {(meaning.synonyms.length > 0) &&
-              <div className='meaning__synonyms'>
+            {(meaning?.synonyms.length > 0) &&
+              <div className='meaning__synonyms-antonyms'>
                 <h5>Synonyms</h5>
-                <span>{meaning.synonyms}</span>
+                <div>
+                  {
+                    meaning.synonyms.map(synonym => {
+                      return <span>{synonym}</span>
+                    })
+                  }
+                </div>
+              </div>}
+              {(meaning?.antonyms.length > 0) &&
+              <div className='meaning__synonyms-antonyms'>
+                <h5>Antonyms</h5>
+                <div>
+                  {
+                    meaning.antonyms.map(antonym => {
+                      return <span>{antonym}</span>
+                    })
+                  }
+                </div>
               </div>}
           </div>
         ))
