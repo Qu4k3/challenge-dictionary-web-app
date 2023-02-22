@@ -24,12 +24,12 @@ export function Dropdown() {
 
     if (font) {
       setSelectedFont(fonts.find((e) => e.value == font).label)
-      
+
       switch (font) {
         case 'serif':
           document.documentElement.setAttribute("data-font", "serif");        
         break;
-  
+          
         case 'sans-serif':
           document.documentElement.setAttribute("data-font", "sans-serif");
         break;
@@ -40,7 +40,7 @@ export function Dropdown() {
       
         default:
           document.documentElement.setAttribute("data-font", "sans-serif");
-          break;      
+        break;      
       }
     }
 
