@@ -53,6 +53,18 @@
   --font-family: #{variables.$font-family-mono};
 }
 
+.nav .nav__actions .selector__items .selector__item.serif {
+  font-family: #{variables.$font-family-serif};
+}
+
+.nav .nav__actions .selector__items .selector__item.sans-serif {
+  font-family: #{variables.$font-family-sans-serif};
+}
+
+.nav .nav__actions .selector__items .selector__item.mono {
+  font-family: #{variables.$font-family-mono};
+}
+
 * {
   padding: 0;
   margin: 0;
