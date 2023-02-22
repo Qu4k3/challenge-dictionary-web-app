@@ -30,6 +30,8 @@ export function Nav() {
     }
 
     if (theme == "light") {
+      switchElement.checked = false;
+      setIsDarkMode(false);
       document.documentElement.setAttribute("data-theme", "light");
     }
   };
